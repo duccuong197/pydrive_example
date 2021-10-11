@@ -67,9 +67,9 @@ def list_folder(service, id_parent):
 def zip_folder(output_filename, dir_name):
     shutil.make_archive(output_filename, 'zip', dir_name)
 
-id_parent = "1m1tGsd0N4kCrv7n5Zb6Pt4JXGAY4wUro"
+id_parent = "1t0kpD6Bn12uj6tR1raxPmn1XF5YZbhZL" # https://drive.google.com/drive/u/0/folders/1t0kpD6Bn12uj6tR1raxPmn1XF5YZbhZL
 
-path_file = "hello.txt"
+path_file = "hello.txt" # file in local machine
 upload_file(service, path_file, id_parent)
 
 
