@@ -67,34 +67,10 @@ def list_folder(service, id_parent):
 def zip_folder(output_filename, dir_name):
     shutil.make_archive(output_filename, 'zip', dir_name)
 
-id_root = "1on5DS_trEbb1JQYjbxgQirTPMh5SmU1R"
-root_path = "/data/share/vehicle_analytics"
-ignore_folder = ["scripts", 'J7Pro']
-service = authentication()
+id_parent = "1m1tGsd0N4kCrv7n5Zb6Pt4JXGAY4wUro"
 
-id_folder = {}
-
-for folder in list_folder(service, id_root):
-    for sub_folder in list_folder(service, folder['id']):
-        print(sub_folder['title'])
-        id_folder[sub_folder['title']] = sub_folder['id']
-
-for folder in os.listdir(root_path):
-    if folder in ignore_folder:
-        continue
-    path_folder = os.path.join(root_path, folder)
-    for dir_data in os.listdir(path_folder):
-        path_data = os.path.join(path_folder, dir_data)
-        print("data: {} _ {}".format(folder, dir_data))
-        path_file_zip = os.path.join(path_data,"vehicle_{}".format(dir_data))
-        path_folder_zip = os.path.join(path_data, 'vehicle', 'detected_vehicle_draw')
-        if not os.path.isfile(path_file_zip+".zip"):
-            zip_folder(output_filename=path_file_zip, dir_name=path_folder_zip)
-            upload_file(service,"{}.zip".format(path_file_zip), id_folder[dir_data])
-
-
-# path_file = "/data/share/vehicle_analytics/J7Pro/hust_parking/vehicle_hust_parking.zip"
-# upload_file(service, path_file, "1m1tGsd0N4kCrv7n5Zb6Pt4JXGAY4wUro")
+path_file = "hello.txt"
+upload_file(service, path_file, id_parent)
 
 
 
